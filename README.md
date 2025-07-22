@@ -23,6 +23,10 @@ Always starts with '7ew52-sqaaa-aaaal-qsrda-cai'
 
 ## Topping up ⚡🔋⚡
 
+Warning: You need to send above 0.2 NTC or it will be ignored.
+
+Fee: 0.1NTC is charged when topping up.
+
 When you send NTC to the given text ICRC top-up address, the NTC will be burned and the canister will receive cycles.
 
 The canister top-up address is permanent. You can publish it on your website for others to top up your canisters with a transaction from their wallets.
@@ -35,3 +39,4 @@ You could also take the canister2subaccount function and generate these addresse
 If sending to unavailable subnet, the request will be retried 11 times - 5 min between retries. If that doesn't work after 55min, the NTC is lost.
 
 It's a one way topping up.
+
