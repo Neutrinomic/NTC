@@ -91,7 +91,7 @@ actor class NTCminter() = this {
             var last_tried_id : Nat64 = 0;
             label sendloop while (i < MAX_CYCLE_SEND_CALLS) { 
                 let ?(id, request) = BTree.deleteMax<Nat64, NTC2Can_request>(NTC2Can, Nat64.compare) else break sendloop;
-                if (request.last_try != 0 and (now - request.last_try < 300*1_000_000_000)) { // retry every 2 minutes
+                if (request.last_try != 0 and (now - request.last_try < 300*1_000_000_000)) { // retry every 5 minutes
                     let new_id : Nat64 = ((id >> 32) / 2) << 32 | Nat64.fromNat32(unique_request_id);
                     ignore BTree.insert<Nat64, NTC2Can_request>(NTC2Can, Nat64.compare, new_id, request);
                     unique_request_id += 1;
