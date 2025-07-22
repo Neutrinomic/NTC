@@ -20,6 +20,8 @@ NTC minter: 7ew52-sqaaa-aaaal-qsrda-cai
 
 **⚡🔋⚡ Feature: No need to put retry logic in your canisters. A simple icrc1_transfer to your top-up address or a vector address gets it done**
 
+**⚡🔋⚡ Feature: Use inside protocols where you charge a fee in different tokens**
+
 **⚡🔋⚡ Feature: Mint, store in treasury and top up with simple transfers from an SNS DAO**
 
 ## Mint with dfx
