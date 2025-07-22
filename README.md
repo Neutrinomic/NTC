@@ -25,7 +25,7 @@ Always starts with '7ew52-sqaaa-aaaal-qsrda-cai'
 
 Warning: You need to send above 0.2 NTC or it will be ignored.
 
-Fee: 0.1NTC is charged when topping up.
+Fee: 0.1NTC is charged when topping up. 0.005 NTC ledger fee.
 
 When you send NTC to the given text ICRC top-up address, the NTC will be burned and the canister will receive cycles.
 
