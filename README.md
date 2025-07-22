@@ -1,4 +1,6 @@
-# NTC
+<img width="1024" height="1024" alt="NTC_BIG" src="https://github.com/user-attachments/assets/356ac699-8ee1-49c0-a877-d065504419ea" />
+
+# NTC (NCycles) Neutrinite T Cycles
 
 NTC ledger: 7dx3o-7iaaa-aaaal-qsrdq-cai
 
