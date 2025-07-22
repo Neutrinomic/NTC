@@ -20,6 +20,8 @@ NTC minter: 7ew52-sqaaa-aaaal-qsrda-cai
 
 **⚡🔋⚡ Feature: No need to put retry logic in your canisters. A simple icrc1_transfer to your top-up address or a vector address gets it done**
 
+**⚡🔋⚡ Feature: Mint, store in treasury and top up with simple transfers from an SNS DAO**
+
 ## Mint with dfx
 
 dfx canister --network ic call 7ew52-sqaaa-aaaal-qsrda-cai mint --with-cycles 10T --wallet `dfx identity get-wallet --network ic`
