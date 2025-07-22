@@ -6,15 +6,19 @@ NTC ledger: 7dx3o-7iaaa-aaaal-qsrdq-cai
 
 NTC minter: 7ew52-sqaaa-aaaal-qsrda-cai
 
-**⚡🔋⚡ Feature: Canister top-up addresses. Each canister has an address that automatically detects when NTC is sent to it and tops up the canister with cycles. ⚡🔋⚡**
+**⚡🔋⚡ Feature: Canister top-up addresses. Each canister has an address that automatically detects when NTC is sent to it and tops up the canister with cycles. **
 
-**⚡🔋⚡ Feature: Exchange vector from USDT->NTC or ckBTC->NTC or from any NTN DEX token can send directly to your top-up address ⚡🔋⚡**
+**⚡🔋⚡ Feature: Exchange vector from USDT->NTC or ckBTC->NTC or from any NTN DEX token can send directly to your top-up address **
 
-**⚡🔋⚡ Feature: NTC mint vector for minting large amounts of NTC ⚡🔋⚡**
+**⚡🔋⚡ Feature: NTC mint vector for minting large amounts of NTC **
 
-**⚡🔋⚡ Feature: Splitter vector can refill all your canisters and provide a single top-up address ⚡🔋⚡**
+**⚡🔋⚡ Feature: Splitter vector can refill all your canisters and provide a single top-up address **
 
-**⚡🔋⚡ Feature: cICP->NTC->canister will refill your canister over very long periods of time while your cICP is accumulating neuron maturity ⚡🔋⚡**
+**⚡🔋⚡ Feature: cICP->NTC->canister will refill your canister over very long periods of time while your cICP is accumulating neuron maturity **
+
+**⚡🔋⚡ Feature: DoS resistant **
+
+**⚡🔋⚡ Feature: No need to put retry logic in your canisters. A simple icrc1_transfer to your top-up address or a vector address gets it done **
 
 ## Mint with dfx
 
