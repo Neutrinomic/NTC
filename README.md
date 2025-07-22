@@ -1,10 +1,20 @@
-# NTC
+<img width="1024" height="1024" alt="NTC_BIG" src="https://github.com/user-attachments/assets/356ac699-8ee1-49c0-a877-d065504419ea" />
+
+# NTC (NCycles) Neutrinite T Cycles
 
 NTC ledger: 7dx3o-7iaaa-aaaal-qsrdq-cai
 
 NTC minter: 7ew52-sqaaa-aaaal-qsrda-cai
 
 **⚡🔋⚡ Feature: Canister top-up addresses. Each canister has an address that automatically detects when NTC is sent to it and tops up the canister with cycles. ⚡🔋⚡**
+
+**⚡🔋⚡ Feature: Exchange vector from USDT->NTC or ckBTC->NTC or from any NTN DEX token can send directly to your top-up address ⚡🔋⚡**
+
+**⚡🔋⚡ Feature: NTC mint vector for minting large amounts of NTC ⚡🔋⚡**
+
+**⚡🔋⚡ Feature: Splitter vector can refill all your canisters and provide a single top-up address ⚡🔋⚡**
+
+**⚡🔋⚡ Feature: cICP->NTC->canister will refill your canister over very long periods of time while your cICP is accumulating neuron maturity ⚡🔋⚡**
 
 ## Mint with dfx
 
@@ -37,6 +47,4 @@ If sending to non-existent canister/principal, there are no refunds. Sending wil
 You could also take the canister2subaccount function and generate these addresses locally.
 
 If sending to unavailable subnet, the request will be retried 11 times - 5 min between retries. If that doesn't work after 55min, the NTC is lost.
-
-It's a one way topping up.
 
