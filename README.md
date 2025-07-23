@@ -54,5 +54,5 @@ The requests with most NTC gets processed first to prevent DoS attacks. Every 6 
 If sending to non-existent canister/principal, there are no refunds. Sending will fail. Only send to accounts obtained from get_account.
 You could also take the canister2subaccount function and generate these addresses locally.
 
-If sending to unavailable subnet, the request will be retried 11 times - 5 min between retries. If that doesn't work after 55min, the NTC is lost.
+If sending to unavailable subnet, the request will be retried 11 times - 5 min between retries. If that doesn't work after 55min, the NTC is lost. TODO: Make it keep retrying and increase the time between tries, so it will attempt for a few days before giving up. 
 
