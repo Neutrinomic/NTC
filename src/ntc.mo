@@ -80,6 +80,10 @@ actor class NTCminter() = this {
     stable var unique_request_id : Nat32 = 0;
     let MAX_CYCLE_SEND_CALLS = 20;
 
+
+    stable var topped_up : Nat = 0;
+    stable var failed_topups : Nat = 0;
+
     ignore Timer.recurringTimer<system>(
         #seconds(6),
         func() : async () {
@@ -100,15 +104,17 @@ actor class NTCminter() = this {
                     continue sendloop;
                 };
                 let cycles_amount = request.amount * 1_00_00;
-                Debug.print(debug_show({cycles_amount;id;request}));
+                
                 // If we don't have enough cycles, wait for the ICP to be burned. Make sure we don't delete requests.
                 // If we don't have 20T inside canister skip, we need to keep a minimum
                 if (Cycles.balance() < cycles_amount + 20*T) continue sendloop; 
 
                 try {
                  processing := List.push(((with cycles = cycles_amount) ic.deposit_cycles({ canister_id = request.canister }), id, request), processing);
+                 
                 } catch (e) {
                     Debug.print("Err before await" # Error.message(e));
+                    failed_topups += request.amount * 1_00_00;
                 };
     
                 i += 1;
@@ -119,11 +125,15 @@ actor class NTCminter() = this {
                 try {
                     // Q: Can this even trap? When?
                     let _myrefill = await promise; // Await the promise to get the tick data
+                    topped_up += req.amount * 1_00_00;
                 } catch (_e) {
                     Debug.print(Error.message(_e));
                     // Q: If it traps, does it mean we are 100% sure the cycles didn't get sent?
                     // We readd it to the queue, but with a lower id
-                    if (req.retry > 10) continue awaitreq;
+                    if (req.retry > 10) {
+                        failed_topups += req.amount * 1_00_00;
+                        continue awaitreq;
+                    };
                     let new_id : Nat64 = ((id >> 32) / 2) << 32 | Nat64.fromNat32(unique_request_id);
                     req.retry += 1;
                     req.last_try := Nat64.fromNat(Int.abs(Time.now()));
@@ -218,11 +228,15 @@ actor class NTCminter() = this {
 
     type Stats = {
         cycles : Nat;
+        topped_up : Nat;
+        failed_topups : Nat;
     };
 
     public query func stats() : async Stats {
         {
             cycles = Cycles.balance();
+            topped_up = topped_up;
+            failed_topups = failed_topups;
         };
     };
 

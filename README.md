@@ -26,11 +26,11 @@ NTC minter: 7ew52-sqaaa-aaaal-qsrda-cai
 
 ## Mint with dfx
 
-dfx canister --network ic call 7ew52-sqaaa-aaaal-qsrda-cai mint --with-cycles 10T --wallet `dfx identity get-wallet --network ic`
+dfx canister --network ic call 7ew52-sqaaa-aaaal-qsrda-cai mint --with-cycles 100T --wallet `dfx identity get-wallet --network ic`
 
-You will be asked for Account - This is where you will get the NTC.
+You will be asked for Account - This is where you will get the NTC. Minimum 0.01T when minting.
 
-The canister from which cycles come from is logged inside the mint transaction memo for accountability.
+The canister from which cycles come from is logged inside the mint transaction memo for better accountability.
 
 ## Get your canister top-up address
 
