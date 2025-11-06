@@ -31,7 +31,14 @@ import Address "address";
 
     let NTC_mem_v1 = ICRCLedger.Mem.Ledger.V1.new();
     let NTC_mem_v2 = ICRCLedger.Mem.Ledger.V2.upgrade(NTC_mem_v1);
-    transient let NTC_ledger = ICRCLedger.Ledger<system>(NTC_mem_v2, NTC_ledger_id, #id(0), Principal.fromActor(this));
+    let NTC_mem_v3 = ICRCLedger.Mem.Ledger.V3.upgrade(NTC_mem_v2);
+
+    transient let NTC_ledger = ICRCLedger.Ledger<system>(NTC_mem_v3, {
+        LEDGER_ID = ledgerId;
+        ME_CAN = Principal.fromActor(this);
+        START_FROM_BLOCK = #id(0);
+        CYCLE_RECURRING_TIME_SEC = 10;
+    });
 
     private transient let ic : IC.Self = actor ("aaaaa-aa");
 
@@ -60,15 +67,17 @@ import Address "address";
     };
 
 
-    rqq.dispatch := ?(func (action: Action) : async* () {
+    rqq.dispatch := ?(func (action: Action) : async* RQQ.DispatchResponse {
         switch (action.task) {
             case (#refill) {
                 await (with cycles = action.amount) ic.deposit_cycles({ canister_id = action.to });
                 topped_up += action.amount;
+                #success;
             };
             case (#call(memo)) {
                 let can = actor (Principal.toText(action.to)) : NTC_call_endpoint;
                 await (with cycles = action.amount; timeout = 20) can.ntc(action.from, memo);
+                #success;
             };
         };
     });
@@ -138,7 +147,6 @@ import Address "address";
         });
 
     };
-
 
 
     // Other helper functions -----
