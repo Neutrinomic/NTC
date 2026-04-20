@@ -1,5 +1,4 @@
 
-Upgrade NTN mint. Uses RQQ. Adds a new call feature. Uses latest DeVeFi libraries.
-
+Upgrade NTN mint, remove call with cycles function.
 
 https://github.com/Neutrinomic/NTC

@@ -15,14 +15,7 @@ import Nat32 "mo:base/Nat32";
 import Old "old";
 import Address "address";
 
-( with migration = func ({
-        NTC2Can : BTree.BTree<Nat64, Old.NTC2Can_request>;
-    }) : {
-        NTC2Can : Nat;
-    } = {
-        NTC2Can = 0;
-    }
-) persistent actor class NTCminter({ledgerId : Principal}) = this {
+persistent actor class NTCminter({ledgerId : Principal}) = this {
 
   
     transient let T = 1_000_000_000_000;
@@ -75,8 +68,8 @@ import Address "address";
                 #success;
             };
             case (#call(memo)) {
-                let can = actor (Principal.toText(action.to)) : NTC_call_endpoint;
-                await (with cycles = action.amount; timeout = 20) can.ntc(action.from, memo);
+                //let can = actor (Principal.toText(action.to)) : NTC_call_endpoint;
+                //await (with cycles = action.amount; timeout = 20) can.ntc(action.from, memo);
                 #success;
             };
         };
